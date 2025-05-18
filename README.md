@@ -63,7 +63,7 @@ After login and encryption setup, the main menu offers the following options:
 You can convert the script into an executable using **PyInstaller**:
 
 1. Open **CMD as Administrator**
-2. Run: `pip install pyinstaller`
+2. Run: `pip install PyInstaller`
 3. Build: `python -m PyInstaller --onefile path/to/S.E.G.py`
 4. Go to the `dist` folder – your `.exe` file will be there.
 5. Done!
