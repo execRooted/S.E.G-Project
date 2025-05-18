@@ -1,7 +1,9 @@
  Welcome to the SEG Program! Here's how it works:
 
+       *This is a self-dependable project, made 100% in Python. It includes a list of features, including:
+
     1. **Login**:
-       - The program requires you to login with the username and password.
+       - The program requires you to login with the username and password(default admin admin).
        - If you do not see the password, don't worry. It uses the same system like in Linux, so you can't see it, but it's beeing typed.
        - You'll have 3 attempts to enter the correct credentials, then the program will shut off.
 
@@ -31,11 +33,17 @@
          simply change the extension to what the file had before the encryption.
 
     * This program is made specificly for Windows.
-    *General group chat has the shared password SEG. Enjoy.
+    * You need a firebase URL. Just paste it in the FIREBASE_URL variable.!!!
+    * To modify the default admin admin login, modify the correct_user and correct_pass variables.
+    * To make this program a executable, I have only tested PyInstaller. This works fine. 
+        List of commands to make it an exe:
+             1. Open a cmd as a administartor;
+             2. pip install PyInstaller
+             3. python -m PyInstaller --onefile path/to/file/S.E.G.py
+             4. Check inside the dist folder
+             5. Done! Enjoy! :D
     
-    Enjoy using SEG Program! Keep your shared password safe and secure. Choose complex usernames, to not conflict with others. Theonly bad thing of your username conflicting with others, is that you will see in their chats, but not their messages,becouse they have another shared password. 
+    Enjoy using the Secure Encrypted Gateway Program! Keep your shared password safe and secure.  
       
     
      *Made by execRooted*
-
-
