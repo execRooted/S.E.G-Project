@@ -3,7 +3,7 @@ This is a self-contained project, made 100% in Python.
 
 * For the program to work, you have to configure Firebase database(Instructions below)
 ---
-** This program is made to encrypt files and messages, so the only people in the world that have access to them, are the ones that have the exact same shared password and this program on their computer.
+* This program is made to encrypt files and messages, so the only people in the world that have access to them, are the ones that have the exact same shared password and this program on their computer.
 ---
 **Download**
 
