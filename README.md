@@ -1,5 +1,6 @@
 # Secure Encrypted Gateway (S.E.G)
-
+*This is a self-contained project, made 100% in Python. 
+---
 **Download**
 
 This project is specificly for Windows, so just download the zip, and in a cmd window paste this command:
@@ -7,10 +8,9 @@ This project is specificly for Windows, so just download the zip, and in a cmd w
 After that, simply open the file with python3. 
 
 *You need to have python3 installed!*
-
-*This is a self-contained project, made 100% in Python. It includes a list of features, including:*
-
 ---
+
+It includes a list of features, including:*
 
 ## **1. Login**
 
