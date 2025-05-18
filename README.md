@@ -1,5 +1,5 @@
- **Secure Encrypted Gateway (S.E.G)**
-*This is a self-contained project, made 100% in Python. *
+ **Secure Encrypted Gateway (S.E.G):**
+This is a self-contained project, made 100% in Python.
 ---
 **Download**
 
