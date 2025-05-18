@@ -10,7 +10,7 @@ After that, simply open the file with python3.
 *You need to have python3 installed!*
 ---
 
-It includes a list of features, including:*
+*It includes a list of features, including:*
 
 ## **1. Login**
 
