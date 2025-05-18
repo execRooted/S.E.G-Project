@@ -1,5 +1,7 @@
  **Secure Encrypted Gateway (S.E.G):**
 This is a self-contained project, made 100% in Python.
+
+* For the program to work, you have to configure Firebase database(Instructions below)
 ---
 **Download**
 
@@ -80,7 +82,7 @@ You can convert the script into an executable using **PyInstaller**:
 
 ## **8. Firebase Setup Instructions**
 
-To enable encrypted messaging and file storage features, you need to configure a Firebase Realtime Database:
+For the program to work, you need to configure a Firebase Realtime Database:
 
 ### **Step 1: Create a Firebase Project**
 
