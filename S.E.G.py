@@ -20,7 +20,7 @@ MAGENTA = "\033[95m"
 RESET = "\033[0m"
 
 # === CONFIGURATION ===
-FIREBASE_URL = "https://seg-messager-default-rtdb.firebaseio.com/messages.json"
+FIREBASE_URL = "yourFirebaseURL"
 SALT = b"SEG-SALT-FIXED"
 cipher = None
 has_cleared_once = False
@@ -207,13 +207,13 @@ def terminal_chat():
         else:
             print(f"{RED}Invalid choice{RESET}")
 
-import os
+
 
 def file_encryption():
     while True:
         print(f"{CYAN}File Encryption/Decryption{RESET}")
 
-        # Display the choices vertically with the typewriter effect
+      
         typewriter(f"{GREEN}[1]{RESET} Encrypt a file", delay=0.04)
         typewriter(f"{GREEN}[2]{RESET} Decrypt a file", delay=0.04)
         typewriter(f"{GREEN}[3]{RESET} Back", delay=0.04)
@@ -254,7 +254,7 @@ def file_encryption():
                 print(f"{RED}File does not exist. Please try again.{RESET}")
                 continue 
             
-            # Check if the file has the `.enc` extension before decrypting
+           
             if not filepath.endswith(".enc"):
                 print(f"{RED}File does not have the correct '.enc' extension. Please try again.{RESET}")
                 continue  
@@ -365,7 +365,7 @@ def display_help():
     Welcome to the SEG Program! Here's how it works:
 
     1. **Login**:
-       - The program requires you to login with the username and password.
+       - The program requires you to login with the username and password(default admin admin).
        - If you do not see the password, don't worry. It uses the same system like in Linux, so you can't see it, but it's beeing typed.
        - You'll have 3 attempts to enter the correct credentials, then the program will shut off.
 
@@ -395,7 +395,9 @@ def display_help():
          simply change the extension to what the file had before the encryption.
 
     * This program is made specificly for Windows.
-    *General group chat has the shared password SEG. Enjoy.
+    * You need a firebase URL. Just paste it in the FIREBASE_URL variable.!!!
+    * To modify the default admin admin login, modify the correct_user and correct_pass variables.
+   
     
     Enjoy using SEG Program! Keep your shared password safe and secure. Choose complex usernames, to not conflict with others. Theonly bad thing of your username conflicting with others, is that you will see in their chats, but not their messages,becouse they have another shared password. 
       
