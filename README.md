@@ -1,124 +1,126 @@
- # Secure Encrypted Gateway (S.E.G):
+# Secure Encrypted Gateway (S.E.G)
 
-* This is a self-contained project, made 100% in Python.
-
-* For the program to work, you have to configure Firebase database(Instructions below)
----
-* This program is made to encrypt files and messages, so the only people in the world that have access to them, are the ones that have the exact same shared password and this program on their computer.
----
-**Download**
-
-This project is specificly for Windows, so just download the zip, and in a cmd window paste this command:
-`pip install -r requirements.txt`
-After that, simply open the file with python3. 
-
-*You need to have python3 installed!*
----
-
-*It includes a list of features, including:*
-
-## **1. Login**
-
-- The program requires you to log in using a username and password (default: **admin admin**).
-- If you do not see the password as you type, don't worry — it behaves like Linux terminals where input is hidden.
-- You have **3 attempts** to enter the correct credentials. After that, the program will shut down.
+A self-contained secure communication project built entirely in Python, designed to encrypt messages and files using a shared password. Only users with the same password and the program can access the data.
 
 ---
 
-## **2. Shared Password for Encryption**
+## 🔧 Requirements & Setup
 
-- After logging in, you'll be prompted to enter a **shared password**.
-- This password is used to **encrypt and decrypt** messages and files.
-- All users must enter the **same shared password** to exchange messages and files successfully.
+### Download & Install
 
----
+1. Download the repository (ZIP or Git).
+2. Open a CMD window in the project folder.
+3. Run:
+   ```
+   pip install -r requirements.txt
+   ```
+4. Launch the app with:
+   ```
+   python S.E.G.py
+   ```
 
-## **3. Main Menu**
-
-After login and encryption setup, the main menu offers the following options:
-
-- **[1] Encode Message** – Encrypt a message using the shared password.
-- **[2] Decode Message** – Decrypt an encrypted message using the shared password.
-- **[3] Clear Console** – Clears the screen and re-displays the logo.
-- **[4] Messages** – Access the encrypted messaging system (supports both terminal and GUI).
-- **[5] File Encryption/Decryption** – Encrypt or decrypt files.
-- **[6] Help** – Display this help section.
-- **[7] Exit** – Exit the program.
+> You must have **Python 3** installed!
 
 ---
 
-## **4. Encrypted Messaging System**
+## 🔐 Features
 
-- Send and receive **encrypted messages** to/from other users.
-- Choose a recipient, type your message, and ensure all parties are using the **same shared password**.
-- You can also check your inbox and delete messages securely.
+### 1. Login
 
----
-
-## **5. File Encryption/Decryption**
-
-- Encrypt files to generate a `.enc` version.
-- Decrypt files to generate a `.dec` version.
-- To restore the original file, change the extension of the `.dec` file back to its original format.
+- Default credentials: `admin admin`
+- Password input is hidden for security (Linux-style).
+- 3 incorrect attempts will shut down the app.
 
 ---
 
-## **6. Platform**
+### 2. Shared Password Encryption
 
-- This program is developed **specifically for Windows**.
-- You need a **Firebase Realtime Database URL** – paste it into the `FIREBASE_URL` variable in the script.
-- To modify the default `admin`/`admin` login, change the values of the `correct_user` and `correct_pass` variables.
-
----
-
-## **7. Making an Executable (EXE)**
-
-You can convert the script into an executable using **PyInstaller**:
-
-1. Open **CMD as Administrator**
-2. Run: `pip install PyInstaller`
-3. Build: `python -m PyInstaller --onefile path/to/S.E.G.py`
-4. Go to the `dist` folder – your `.exe` file will be there.
-5. Done!
+- Prompted after login.
+- Used for both encryption and decryption of messages and files.
+- All users must use the **same shared password**.
 
 ---
 
-## **8. Firebase Setup Instructions**
+### 3. Main Menu Options
 
-For the program to work, you need to configure a Firebase Realtime Database:
+- `[1] Encode Message` – Encrypt a text message.
+- `[2] Decode Message` – Decrypt a text message.
+- `[3] Clear Console` – Clears the screen.
+- `[4] Messages` – Encrypted messaging system (CLI + GUI).
+- `[5] File Encryption/Decryption` – Encrypt or decrypt files.
+- `[6] Help` – Display help instructions.
+- `[7] Exit` – Close the application.
 
-### **Step 1: Create a Firebase Project**
+---
 
-- Visit: [https://console.firebase.google.com](https://console.firebase.google.com)
-- Click **"Add Project"** and follow the setup steps.
-- Once created, go to your project dashboard.
+### 4. Encrypted Messaging System
 
-### **Step 2: Enable Realtime Database**
+- Send encrypted messages using Firebase.
+- Securely view inbox and delete messages.
+- Works only if sender and receiver use the same shared password.
 
-- Go to **Build > Realtime Database**
-- Click **"Create Database"**
-- Choose a location and select **Start in test mode**
-- Click **"Enable"**
+---
 
-### **Step 3: Set the Firebase URL**
+### 5. File Encryption/Decryption
 
-- After enabling, copy your database URL, e.g.:
+- Encrypts files into `.enc` format.
+- Decrypts to `.dec` format.
+- To restore, rename `.dec` file to its original extension.
 
-```
-https://your-project-id.firebaseio.com/
-```
+---
 
-- Set it in your Python code like this:
+### 6. Platform
 
-```python
-FIREBASE_URL = "https://your-project-id.firebaseio.com/messages.json"
-```
+- Built specifically for **Windows**.
+- Requires a **Firebase Realtime Database** (see below).
+- Default login credentials (`admin/admin`) can be changed in the script.
 
-*Make sure to include `/messages.json` at the end.*
+---
 
-### **Step 4: (Optional) Open Access Rules for Testing**
+### 7. Convert to EXE
 
-For easy testing, go to the **Rules** tab and replace with:
+To make a standalone Windows executable:
+
+1. Open CMD as Administrator.
+2. Run:
+   ```
+   pip install pyinstaller
+   ```
+3. Build:
+   ```
+   python -m PyInstaller --onefile S.E.G.py
+   ```
+4. Find the EXE in the `dist` folder.
+
+---
+
+## 🔧 Firebase Setup Instructions
+
+### Step 1: Create Firebase Project
+
+- Visit: https://console.firebase.google.com
+- Create a new project.
+
+### Step 2: Enable Realtime Database
+
+- Navigate to **Build > Realtime Database**
+- Click "Create Database", choose a location, and select **test mode**.
+- Click **Enable**.
+
+### Step 3: Copy Database URL
+
+- Use a URL like:
+  ```
+  https://your-project-id.firebaseio.com/
+  ```
+- Set it in your script:
+  ```python
+  FIREBASE_URL = "https://your-project-id.firebaseio.com/messages.json"
+  ```
+
+### Step 4 (Optional): Open Rules for Testing
+
+In the Rules tab, replace with:
 
 ```json
 {
@@ -129,10 +131,16 @@ For easy testing, go to the **Rules** tab and replace with:
 }
 ```
 
-*Warning: These rules make your database public. Do not use in production.*
+> ⚠️ This makes your database public — do not use in production.
 
 ---
 
-**Enjoy using the Secure Encrypted Gateway Program. Keep your shared password safe and secure.**
+## ✅ Summary
+
+- Encrypt & decrypt messages and files.
+- Use Firebase as a secure cloud message board.
+- Share passwords safely to ensure end-to-end encryption.
+
+---
 
 **Made by execRooted**
