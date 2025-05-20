@@ -1,6 +1,6 @@
 # Secure Encrypted Gateway (S.E.G)
 
-A self-contained secure communication project built entirely in Python, designed to encrypt messages and files using a shared password. Only users with the same password and the program can access the data.
+A self-contained secure communication project built entirely in Python, designed to encrypt messages and files on windows using a shared password. Only users with the same password and the program can access the data.
 
 ---
 
