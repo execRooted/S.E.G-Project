@@ -28,7 +28,7 @@ A self-contained secure communication project built entirely in Python, designed
 ### 1. Login
 
 - Default credentials: `admin admin`
-- Password input is hidden for security (Linux-style).
+- Password input is hidden for security.
 - 3 incorrect attempts will shut down the app.
 
 ---
