@@ -1,6 +1,7 @@
 import tkinter as tk
 import os
 from tkinter import simpledialog, scrolledtext
+from tkinter import filedialog
 import requests, time, json, os, base64, hashlib, getpass, sys, threading
 from cryptography.fernet import Fernet
 import shutil
@@ -20,7 +21,7 @@ MAGENTA = "\033[95m"
 RESET = "\033[0m"
 
 # === CONFIGURATION ===
-FIREBASE_URL = "yourFirebaseURL"
+FIREBASE_URL = "https://your-project-id.firebaseio.com/messages.json"
 SALT = b"SEG-SALT-FIXED"
 cipher = None
 has_cleared_once = False
@@ -331,13 +332,59 @@ def gui_chat():
                     if msg_id in shown_message_ids:
                         continue
                     frm = msg.get("from", "Unknown")
-                    decoded = decode_msg(msg["content"])
-                    txt_area.insert(tk.END, f"{frm}: {decoded}\n")
+                    if msg.get("type") == "file":
+                        encrypted_data = base64.b64decode(msg["content"])
+                        try:
+                            decrypted_data = cipher.decrypt(encrypted_data)
+                            save_path = os.path.join(os.getcwd(), msg.get("filename", "received_file"))
+                            with open(save_path, "wb") as f:
+                                f.write(decrypted_data)
+                            txt_area.insert(tk.END, f"{frm} sent a file: {msg.get('filename')} (saved in the S.E.G.py folder)\n")
+                        except:
+                            txt_area.insert(tk.END, f"{frm} sent a file, but decryption failed.\n")
+                    else:
+                        decoded = decode_msg(msg["content"])
+                        txt_area.insert(tk.END, f"{frm}: {decoded}\n")
                     shown_message_ids.add(msg_id)
                     delete_message(msg_id)
                 txt_area.configure(state="disabled")
                 txt_area.see(tk.END)
             time.sleep(2)
+
+
+
+    def send_file_gui():
+        filepath = filedialog.askopenfilename()
+        if not filepath:
+            return  # User cancelled
+
+        try:
+            with open(filepath, 'rb') as f:
+                file_data = f.read()
+
+            encrypted_data = cipher.encrypt(file_data)
+            encoded_file = base64.b64encode(encrypted_data).decode()
+
+            payload = {
+                "to": recipient,
+                "from": sender,
+                "type": "file",
+                "filename": os.path.basename(filepath),
+                "content": encoded_file,
+                "timestamp": time.time()
+            }
+
+            if requests.post(FIREBASE_URL, json=payload).ok:
+                txt_area.configure(state="normal")
+                txt_area.insert(tk.END, f"{sender} sent a file: {os.path.basename(filepath)}\n")
+                txt_area.configure(state="disabled")
+                txt_area.see(tk.END)
+            else:
+                print(f"{RED}[!] Failed to send file{RESET}")
+        except Exception as e:
+            print(f"{RED}[!] Error sending file: {e}{RESET}")
+
+
 
 
     def send():
@@ -351,6 +398,8 @@ def gui_chat():
                 entry.delete(0, tk.END)
 
     entry.bind("<Return>", lambda event: send())
+    file_button = tk.Button(chat, text="Send File", command=send_file_gui)
+    file_button.pack(side=tk.RIGHT, padx=10, pady=5)
 
     threading.Thread(target=refresh, daemon=True).start()
     chat.mainloop()
